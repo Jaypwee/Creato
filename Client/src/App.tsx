@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          How to use pull request?
+          How to use pull request? Create a new branch!
         </p>
         <a
           className="App-link"
