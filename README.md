@@ -18,3 +18,7 @@ Rest of the APIs will be throught HTTPS protocol.
 NodeJS & Express as API server. The servers will be deployed through Heroku.
 
 DB (Tentative)
+
+# Requirements
+
+WIP
