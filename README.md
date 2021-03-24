@@ -21,4 +21,36 @@ DB (Tentative)
 
 # Requirements
 
-WIP
+The Creato API Server will have the following requirements:
+
+### Authentication
+
+- Creato users will be able to sign up to Creato
+
+- Creato users will be able to sign in and sign out with their Creato account
+
+- Creato users can delete their account.
+
+
+### Trading
+
+- Creato users will be able to communicate with the trading market.
+
+- Users can check the graph in real-time.
+
+- Users are able to place buy and sell orders
+
+- Users are able to cancel their orders.
+
+- Users are able to check their order histories.
+
+### Subscriptions
+
+- Creato users can subscribe to tokens currently open for public offerings
+
+- Creato users can view lists of current available offerings.
+
+
+### Banking
+
+- Creato users can deposit / withdraw money into their Creato Account.
