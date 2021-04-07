@@ -5,7 +5,7 @@ import { MaxWidth } from 'styles';
 const Home: React.FunctionComponent = () => {
   return (
     <MaxWidth>
-      <AreaChart />
+      Hello, welcome to Creato
     </MaxWidth>
   );
 };
