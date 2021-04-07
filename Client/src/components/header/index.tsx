@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { MaxWidth } from 'styles';
-import { ReactComponent as Logo } from 'assets/img-logo-kasabiz.svg';
-import { KasaBizHeader } from './style';
+import { CreatoHeader } from './style';
 
 const Header: React.FunctionComponent = () => {
   return (
-    <KasaBizHeader>
-      <MaxWidth>
-        <Logo />
-      </MaxWidth>
-    </KasaBizHeader>
+    <CreatoHeader>
+      <MaxWidth>Creato</MaxWidth>
+    </CreatoHeader>
   );
 };
 

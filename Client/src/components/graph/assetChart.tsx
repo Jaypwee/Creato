@@ -205,9 +205,9 @@ const AreaChart: React.FC = () => {
   // 테스트용 코드라 추후에 변경 예정.
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(
-        'https://te.x.staging.kr.kasa.exchange/markets/KR011A20000025/closes?limit=90'
-      );
+      // Need to connect to socket
+      // const res = await axios.get(
+      // );
       res.data.data.items.splice(16, 2);
       setData(res.data.data.items);
       console.log(res.data.data.items);
