@@ -8,7 +8,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import Header from 'components/header';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
-import useTheme from 'hooks/useTheme';
 import theme from 'theme';
 import { GlobalStyles } from 'styles';
 import { MainContainer } from './style';
@@ -20,10 +19,9 @@ const Trade = loadable(() => import('./trade'));
 
 const AppRouter: React.FC = () => {
   // FIXME: Props should be dynamic, but set as string for testing purposes
-  const themeType = useTheme({ storage: 'dark' });
 
   return (
-    <ThemeProvider theme={theme[themeType]}>
+    <ThemeProvider theme={theme}>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <GlobalStyles />
