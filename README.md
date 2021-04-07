@@ -15,9 +15,7 @@ Rest of the APIs will be throught HTTPS protocol.
 
 # Server
 
-NodeJS & Express as API server. The servers will be deployed through Heroku.
-
-DB (Tentative)
+Python and Django as API server. The servers will be deployed through Heroku.
 
 # Requirements
 
@@ -54,3 +52,7 @@ The Creato API Server will have the following requirements:
 ### Banking
 
 - Creato users can deposit / withdraw money into their Creato Account.
+
+# Links to documents
+
+Link 
