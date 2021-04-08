@@ -18,3 +18,5 @@ docs: FORCE
 	python3 django-pydoc.py -w api.views
 	mv *.html doc
 
+coverage: FORCE
+  python3 manage.py test --with-coverage
