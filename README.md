@@ -15,7 +15,9 @@ Rest of the APIs will be throught HTTPS protocol.
 
 # Server
 
-Python and Django as API server. The servers will be deployed through Heroku.
+ Python and Django as API server. The servers will be deployed through Heroku.
+
+ Database uses Django's internal sqlite DB.
 
 # Requirements
 
@@ -25,16 +27,16 @@ The Creato API Server will have the following requirements:
 
 - Creato users will be able to sign up to Creato
 
-- Creato users will be able to sign in and sign out with their Creato account
+- Creato users will be able to sign in.
+
+- Creato users will be able to sign out.
 
 - Creato users can delete their account.
 
 
 ### Trading
 
-- Creato users will be able to communicate with the trading market.
-
-- Users can check the graph in real-time.
+- Users can check the orderbook in real-time.
 
 - Users are able to place buy and sell orders
 
@@ -51,8 +53,10 @@ The Creato API Server will have the following requirements:
 
 ### Banking
 
-- Creato users can deposit / withdraw money into their Creato Account.
+- Creato users can deposit money into their Creato Account.
+
+- Creato users can withdraw money into their Creato Account.
 
 # Links to documents
 
-Link 
+[Link to the Requirements Documents](https://github.com/Jaypwee/Creato/tree/master/docs)
