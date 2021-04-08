@@ -7,4 +7,8 @@ from rest_framework.response import Response
 
 @api_view(['GET'])
 def get(request):
+    """
+    :param request: nothing
+    :return: test response
+    """
     return Response({'message': 'hello'})

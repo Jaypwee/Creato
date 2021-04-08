@@ -18,6 +18,7 @@ from django.urls import path, include
 from api import views
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('hello', views.get)
 ]
