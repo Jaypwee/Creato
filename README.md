@@ -44,7 +44,7 @@ Heroku will be looking at the `release` branch in our remote repository. When th
 
 ***docs***
 
-docs
+It will create a documentation HTML file in the /doc directory.
 
 ***dev_env***
 
