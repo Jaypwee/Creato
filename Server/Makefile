@@ -14,4 +14,7 @@ dev_env: FORCE
 	python3 manage.py runserver
 
 docs: FORCE
+	mkdir -p doc
+	python3 django-pydoc.py -w api.views
+	mv *.html doc
 
