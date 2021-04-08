@@ -6,7 +6,7 @@ tests: FORCE
 prod: FORCE
 	- pip freeze > requirements.txt
 	git add .
-	git commit -am "Testing makefile"
+	git commit -am "Testing makefile push to master branch."
 	git push origin master
 
 dev_env: FORCE

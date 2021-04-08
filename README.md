@@ -13,6 +13,43 @@ A websocket will be used to communicate between the client and the trading engin
 
 Rest of the APIs will be throught HTTPS protocol.
 
+# Instructions
+
+Use `git clone` to clone our repository.
+
+### Client
+
+The client requires NPM installed in the computer to run. After installing npm, run the following code.
+
+```
+  cd Client
+  npm install
+  yarn start 
+```
+
+This will open up a development server in localhost port 3000.
+
+
+### Server
+
+A makefile is given for the Server repository. The following are the make targets.
+
+***tests***
+
+Django will run tests that are identified in the api/tests.py file. After the tests are ran, it will report how many tests have succeeded.
+
+***prod***
+
+Heroku will be looking at the `release` branch in our remote repository. When there is a new commit pushed in the release branch, Heroku will automatically find the diff and deploy the new release.
+
+***docs***
+
+docs
+
+***dev_env***
+
+Installs all the necessary files and then runs the django server. The port will be by default 8000.
+
 # Server
 
  Python and Django as API server. The servers will be deployed through Heroku.
