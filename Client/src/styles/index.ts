@@ -11,6 +11,28 @@ export const flexcenter = css`
   align-items: center;
 `;
 
+export const Button = styled.button`
+  border-radius: 4px;
+  height: 56px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.common.color.white};
+  background-color: ${({ theme }) => theme.common.color.green};
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding-left: 12px;
+  height: 42px;
+  font-size: 14px;
+  
+`;
+
+export const Margin = styled.div<{margin: string}>`
+  margin: ${props => props.margin};
+`
+
 export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;

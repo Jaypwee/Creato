@@ -19,7 +19,7 @@ import {
   axisBottom,
   line,
   area,
-  mouse
+  pointer
 } from 'd3';
 import axios from 'axios';
 import { numberWithCommas, formatDate, getUTCTimestamp, formatDecimal } from 'utils';
@@ -208,9 +208,9 @@ const AreaChart: React.FC = () => {
       // Need to connect to socket
       // const res = await axios.get(
       // );
-      res.data.data.items.splice(16, 2);
-      setData(res.data.data.items);
-      console.log(res.data.data.items);
+      // res.data.data.items.splice(16, 2);
+      // setData(res.data.data.items);
+      // console.log(res.data.data.items);
     };
     fetchData();
   }, []);
@@ -522,13 +522,13 @@ const AreaChart: React.FC = () => {
         })
         .on('mousedown.start', function snapshot(this) {
           isDragging = true;
-          [xSnapshot] = mouse(this);
+          [xSnapshot] = pointer(this);
         })
         .on('mouseup.end', () => {
           isDragging = false;
         })
         .on('mousemove', function mouseEvent(this: any) {
-          const mouseVal = mouse(this);
+          const mouseVal = pointer(this);
           // Hover functionality
           const xData = x.invert(mouseVal[0] + dragTranslate);
           // 만원 단위로 반올림하는 로직이 추가되어있다.
@@ -605,7 +605,7 @@ const AreaChart: React.FC = () => {
              * If the computed balance in the leftNext.close is smaller current Minimum Y value (MINY), it must interpolate the difference and redraw graph
              * Same goes to the rightNext value
              *
-             * Might be improved using webworker.
+             * Might be improved using webworkter.
              */
             let interpolateLeft = MINY;
             let interpolateRight = MAXY;

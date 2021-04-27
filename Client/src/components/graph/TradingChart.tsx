@@ -12,7 +12,7 @@ import {
   extent,
   interpolateNumber,
   line,
-  mouse,
+  pointer,
   range,
   scaleBand,
   scaleLinear,
@@ -383,24 +383,24 @@ const TradingChart: React.FC = () => {
     if (!res.t) {
       fetchData();
     } else {
-      Object.keys(tempData).forEach((key) => {
-        if (key !== 's') {
-          tempData[key].unshift(...res[key]);
-        }
-      });
-      const tickerRes = (
-        await axios.get(
-          `https://te.x.staging.kr.kasa.exchange/exchange/ticker?marketIDs=KR011A20000013`
-        )
-      ).data.data;
-      // Check if recentTimestamp is different (It means a new tick data has been received)
-      const mapArr = mapData(res);
-      mappedData.unshift(...mapArr);
-      recentMappedData = mapArr;
-      setInitialized(true);
-      setData({ ...tempData });
-      setDataLength(tempData.t.length);
-      setTicker(tickerRes);
+      // Object.keys(tempData).forEach((key) => {
+      //   if (key !== 's') {
+      //     tempData[key].unshift(...res[key]);
+      //   }
+      // });
+      // const tickerRes = (
+      //   await axios.get(
+      //     `https://te.x.staging.kr.kasa.exchange/exchange/ticker?marketIDs=KR011A20000013`
+      //   )
+      // ).data.data;
+      // // Check if recentTimestamp is different (It means a new tick data has been received)
+      // const mapArr = mapData(res);
+      // mappedData.unshift(...mapArr);
+      // recentMappedData = mapArr;
+      // setInitialized(true);
+      // setData({ ...tempData });
+      // setDataLength(tempData.t.length);
+      // setTicker(tickerRes);
     }
   };
 
@@ -960,7 +960,7 @@ const TradingChart: React.FC = () => {
         })
         .on('mousedown.start', function snapShot(this) {
           isDragging = true;
-          [xSnapshot] = mouse(this);
+          [xSnapshot] = pointer(this);
         })
         .on('mouseup.end', () => {
           isDragging = false;
@@ -1004,7 +1004,7 @@ const TradingChart: React.FC = () => {
           }
         })
         .on('mousemove', function mouseMove(this) {
-          const mouseVal = mouse(this);
+          const mouseVal = pointer(this);
           const idx = X.invertIdx(mouseVal[0]);
           const idxWithDrag = X.invertIdx(mouseVal[0] + dragTranslate);
           const hoverX =
