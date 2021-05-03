@@ -153,12 +153,11 @@ const EPOCH = 60 * 60 * 1000;
 const now = new Date();
 const nowTick = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours());
 let nextTick;
-// 장은 9시부터 6시까지 열리므로 (개인은 5시까지)
 const OPENTIME = 9 * EPOCH;
 // 안보이는 데이터 기준 leftBorderPixel 에서 몇번째 index에 새로 api호출하는지 정하는 상수.
 const APICALLTHRESHOLD = 100;
-const timeLabels = ['1분', '3분', '5분', '15분', '30분', '1시간', '3시간'];
-const typeLabels = ['라인', '캔들'];
+const timeLabels = ['1m', '3m', '5m', '15m', '30m', '1hr', '3hr'];
+const typeLabels = ['Line', 'Candle'];
 const calculateTo = () => {
   let t;
   if (now.getHours() > 17) {
@@ -223,6 +222,15 @@ const textRectCreator = (id) => {
     .attr('x', bbox.x - sizes.textPadding)
     .attr('y', bbox.y - sizes.textPaddingTop);
 };
+
+interface TickData {
+  t: number,
+  c: number,
+  o: number,
+  h: number,
+  l: number,
+  v: number
+}
 
 const TradingChart: React.FC = () => {
   // Ref hooks
@@ -299,13 +307,27 @@ const TradingChart: React.FC = () => {
 
   // Logic just used for testing purposes
   const apiRequest = async () => {
-    const res = (
-      await axios.get(
-        `https://te.x.staging.kr.kasa.exchange/charts/candles?symbol=KR011A20000013&resolution=${resolution}&from=${from}&to=${to}`
-      )
-    ).data.data;
+    // const res = (
+    //   await axios.get(
+    //     `https://te.x.staging.kr.kasa.exchange/charts/candles?symbol=KR011A20000013&resolution=${resolution}&from=${from}&to=${to}`
+    //   )
+    // ).data.data;
 
-    return res;
+    // return res;
+    // const tempData: TickData[] = [];
+    // const ts = new Date().getTime();
+
+    // for (let i = 0; i < 300; i += 1) {
+    //   tempData.push({
+    //     t: ts - 6000 * i,
+    //     c: 5.5,
+    //     h: 6,
+    //     l: 5.4,
+    //     o: 5.7,
+    //     v: 3000
+    //   })
+    // }
+    // return tempData;
   };
 
   const apiRequestInterval = async () => {
@@ -380,9 +402,9 @@ const TradingChart: React.FC = () => {
     const res = await apiRequest();
     to = from - 1;
     const tempData = timeRangeChanged ? { ...initialData } : { ...data };
-    if (!res.t) {
-      fetchData();
-    } else {
+    // if (!res.t) {
+    // fetchData();
+    // } else {
       // Object.keys(tempData).forEach((key) => {
       //   if (key !== 's') {
       //     tempData[key].unshift(...res[key]);
@@ -401,7 +423,7 @@ const TradingChart: React.FC = () => {
       // setData({ ...tempData });
       // setDataLength(tempData.t.length);
       // setTicker(tickerRes);
-    }
+    // }
   };
 
   useEffect(() => {
@@ -466,7 +488,7 @@ const TradingChart: React.FC = () => {
     const date = new Date(d);
     if (monthPointer !== date.getMonth()) {
       monthPointer = date.getMonth();
-      return `${date.getMonth() + 1}월`;
+      return `${date.getMonth() + 1}M`;
     }
     // Switch case for formatting Days / Months
     switch (timeRange) {
@@ -478,7 +500,7 @@ const TradingChart: React.FC = () => {
       case 30:
       case 60:
         if (date.getHours() === 9 && date.getMinutes() === 0) {
-          return `${date.getDate()}일`;
+          return `${date.getDate()}D`;
         }
         break;
       case 240:
@@ -486,7 +508,7 @@ const TradingChart: React.FC = () => {
       case 60 * 24 * 7:
         if (tickCount === 12) {
           tickCount = 0;
-          return `${date.getDate()}일`;
+          return `${date.getDate()}D`;
         }
         tickCount += 1;
         break;
@@ -1208,15 +1230,15 @@ const TradingChart: React.FC = () => {
           <MenuUpIcon size={16} color={theme.common.color.red} />
           <TradeValue ref={tradePercentRef}>Percent</TradeValue>
         </TradeCurrent>
-        <TradeLabel>시</TradeLabel>
+        <TradeLabel>S</TradeLabel>
         <TradeValue ref={tradeOpenRef}>0</TradeValue>
-        <TradeLabel>고</TradeLabel>
+        <TradeLabel>H</TradeLabel>
         <TradeValue ref={tradeHighRef}>0</TradeValue>
-        <TradeLabel>종</TradeLabel>
+        <TradeLabel>C</TradeLabel>
         <TradeValue ref={tradeCloseRef}>0</TradeValue>
-        <TradeLabel>저</TradeLabel>
+        <TradeLabel>L</TradeLabel>
         <TradeValue ref={tradeLowRef}>0</TradeValue>
-        <TradeLabel>거래</TradeLabel>
+        <TradeLabel>Vol</TradeLabel>
         <TradeValue ref={tradeVolumeRef}>0</TradeValue>
       </TradeLabelContainer>
       {/* -------------------------- 차트 SVG DOM 요소 -------------------------- */}

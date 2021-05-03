@@ -12,3 +12,4 @@ class SetupTestCase(TestCase):
         body = response.content.decode('utf-8')
         val = json.loads(body)
         self.assertEqual(val['message'], 'hello')
+

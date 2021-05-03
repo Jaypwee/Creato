@@ -10,7 +10,7 @@
     "axios": "^0.21.1",
     "connected-react-router": "^6.9.1",
     "d3": "^6.6.2",
-    "history": "^5.0.0",
+    "history": "^4.10.1",
     "mdi-react": "^7.5.0",
     "polished": "^4.1.1",
     "react": "^17.0.1",

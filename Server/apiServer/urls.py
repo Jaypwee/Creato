@@ -22,5 +22,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello', views.get),
     path('signUp',views.signUp),
-    path('signIn', views.signIn)
+    path('signIn', views.signIn),
+    path('tokens', views.tokens),
+    path('balance', views.getBalance),
+    path('addBalance', views.addBalance),
+    path('subscribe', views.subscribe),
+    path('unsubscribe', views.unsubscribe),
+    path('subscriptions', views.getSubscriptions),
+    path('token/issue', views.issueToken),
+    path('token/list', views.listToken),
+    path('deposit', views.addBalance),
+    path('unsubscribe/<str:uuid>', views.unsubscribe)
 ]

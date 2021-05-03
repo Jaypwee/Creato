@@ -16,6 +16,22 @@ export function formatDate(date: Date | undefined): string {
   return `${year}-${month}-${day}`;
 }
 
+export function isoDatetimeToDisplay(value: string | number): string {
+  if (!value) {
+    return '';
+  }
+
+  const dateTime = new Date(value);
+
+  // eslint-disable-next-line no-restricted-globals
+  if (isNaN(dateTime.getTime()) && typeof value === 'string') {
+    return value;
+  }
+
+  return dateTime.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+
 export function formatHHMM(date: Date | undefined): string {
   if (!date) {
     return '';

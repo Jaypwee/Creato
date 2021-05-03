@@ -120,6 +120,13 @@ const TextBubbleTail = styled.div`
   z-index: -1;
 `;
 
+// Types
+
+interface TradeData {
+  tradeDate: string;
+  
+}
+
 /**
  * ------------------------CONSTANTS & LOCAL UTIL FN------------------------
  */
@@ -167,7 +174,7 @@ const AreaChart: React.FC = () => {
   const bubbleRef = useRef<HTMLDivElement>(null);
   const bubbleTailRef = useRef<HTMLDivElement>(null);
   const gradientRef = useRef<HTMLOrSVGElement>(null);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [comparePriceValue, setComparePriceValue] = useState<number>(0);
   const [timeRange, setTimeRange] = useState<number | string>(30);
 
@@ -211,6 +218,33 @@ const AreaChart: React.FC = () => {
       // res.data.data.items.splice(16, 2);
       // setData(res.data.data.items);
       // console.log(res.data.data.items);
+     const tempData = [
+      {
+        tradeDate : '2021-04-28',
+        close: 5
+      },
+      {
+        tradeDate : '2021-04-29',
+        close: 5
+      },
+      {
+        tradeDate : '2021-04-30',
+        close: 5
+      },
+       {
+         tradeDate : '2021-05-01',
+         close: 5
+       },
+       {
+        tradeDate : '2021-05-02',
+        close: 5.1
+      },
+      {
+        tradeDate: '2021-05-03',
+        close: 5.2
+      }
+     ]
+     setData(tempData);
     };
     fetchData();
   }, []);
@@ -226,7 +260,7 @@ const AreaChart: React.FC = () => {
       timeRange === 'total'
         ? new Date((data as any)[dataLength - 1].tradeDate).getTime() * EPOCH
         : (timeRange as number) * EPOCH;
-    let pointer;
+    let mPointer;
     // Used as a variable to track translated pixels from drag event
     let dragTranslate = 0;
     let tickCount = 0;
@@ -252,9 +286,9 @@ const AreaChart: React.FC = () => {
             tickMonth = d.getMonth() + 1;
             // 1월 일때는 연도를 보여준다.
             if (d.getMonth() === 0) {
-              return `${d.getFullYear()}년`;
+              return `${d.getFullYear()}yr`;
             }
-            return `${d.getMonth() + 1}월`;
+            return `${d.getMonth() + 1}`;
           }
           return null;
         };
@@ -503,8 +537,8 @@ const AreaChart: React.FC = () => {
           select('#mouse-horizontal').style('opacity', 0);
           select('#priceText').style('opacity', 0);
           select('#dateText').style('opacity', 0);
-          if (pointer) {
-            pointer.attr('opacity', 0);
+          if (mPointer) {
+            mPointer.attr('opacity', 0);
           }
           if (bubbleNode && tailNode) {
             bubbleNode.style.opacity = '0';
@@ -516,8 +550,8 @@ const AreaChart: React.FC = () => {
           select('#mouse-horizontal').style('opacity', 1);
           select('#priceText').style('opacity', 1);
           select('#dateText').style('opacity', 1);
-          if (pointer) {
-            pointer.attr('opacity', 1);
+          if (mPointer) {
+            mPointer.attr('opacity', 1);
           }
         })
         .on('mousedown.start', function snapshot(this) {
@@ -541,18 +575,18 @@ const AreaChart: React.FC = () => {
           if (!isDragging) {
             const point = selectAll(`[name='${d.getTime()}']`);
             const pointX = select(`[name='${d.getTime()}']`).attr('cx');
-            if (pointer) {
-              pointer.attr('opacity', 0);
+            if (mPointer) {
+              mPointer.attr('opacity', 0);
             }
             point.attr('opacity', 1);
-            pointer = point;
+            mPointer = point;
             if (yVal) {
               select(bubbleNode).text(numberWithCommas(yVal));
               moveTooltip(x(d), y(yVal));
               if (pointX < leftBorderPixel || pointX > rightBorderPixel) {
                 select(bubbleNode).attr('style', 'opacity:0');
                 select(tailNode).attr('style', 'opacity:0');
-                pointer.attr('opacity', 0);
+                mPointer.attr('opacity', 0);
               }
             } else if (bubbleNode && tailNode) {
               bubbleNode.style.opacity = '0';
@@ -676,11 +710,11 @@ const AreaChart: React.FC = () => {
       <TextBubbleTail ref={bubbleTailRef} />
       <LabelContainer left="24">
         <CurrentPrice>
-          <div>현재 평가금액</div>
+          <div>Total Balance</div>
           <div>{data && numberWithCommas(computeBalance((data as any)[0].close))}</div>
         </CurrentPrice>
         <ComparePrice>
-          <div>전일대비</div>
+          <div>Net Change</div>
           <div>
             {/* {comparePriceValue > 0 ? (
               <MenuUp size={16} />
@@ -701,13 +735,13 @@ const AreaChart: React.FC = () => {
       </LabelContainer>
       <LabelContainer right="36">
         <TimeRangeLabel id="0" clicked={timeRange === ONEMONTH} onClick={handleTimeRange}>
-          1개월
+          1M
         </TimeRangeLabel>
         <TimeRangeLabel id="1" clicked={timeRange === THREEMONTH} onClick={handleTimeRange}>
-          3개월
+          3M
         </TimeRangeLabel>
         <TimeRangeLabel id="2" clicked={timeRange === 'total'} onClick={handleTimeRange}>
-          전체
+          Total
         </TimeRangeLabel>
       </LabelContainer>
       <svg ref={ref} viewBox={`0, 0, ${sizes.width}, ${sizes.height}`}>

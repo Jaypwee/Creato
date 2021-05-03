@@ -19,6 +19,10 @@ export const Button = styled.button`
   font-weight: bold;
   color: ${({ theme }) => theme.common.color.white};
   background-color: ${({ theme }) => theme.common.color.green};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.common.color.fillDarkQuarternary};
+  }
 `;
 
 export const Input = styled.input`
@@ -32,6 +36,11 @@ export const Input = styled.input`
 export const Margin = styled.div<{margin: string}>`
   margin: ${props => props.margin};
 `
+
+export const GreenHighlight = styled.span`
+  color: ${({ theme }) => theme.common.color.green};
+  font-weight: bold;
+`;
 
 export const GlobalStyles = createGlobalStyle`
   body {
