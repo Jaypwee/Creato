@@ -1,3 +1,6 @@
 [submodule "creato-web"]
 	path = creato-web
 	url = https://github.com/Jaypwee/creato-web
+[submodule "creato-backend"]
+	path = creato-backend
+	url = https://github.com/Jaypwee/creato-backend
