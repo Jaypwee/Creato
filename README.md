@@ -15,16 +15,23 @@ Rest of the APIs will be throught HTTPS protocol.
 
 # Instructions
 
-Use `git clone` to clone our repository.
+Use `git clone ${address} --recursive` to clone our repository. You must put the --recursive tag to properly clone the submodule directories.
 
 ### Client
 
 The client requires NPM installed in the computer to run. After installing npm, run the following code.
 
 ```
-  cd Client
-  npm install
+  cd creato-web
+  yarn install
   yarn start 
+```
+
+OR if you have make installed,
+
+```
+  cd creato-web
+  make dev_env
 ```
 
 This will open up a development server in localhost port 3000.
@@ -96,4 +103,8 @@ The Creato API Server will have the following requirements:
 
 # Links to documents
 
-[Link to the Requirements Documents](https://github.com/Jaypwee/Creato/tree/master/docs)
+[Link to the Creato Presentation](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_Presentation.pdf)
+
+[Link to the Creato SPMP Documents](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_SPMP.pdf)
+
+[Link to the Creato SRS Requirements](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_SRS_Analysis.pdf)
