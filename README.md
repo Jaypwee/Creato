@@ -1,5 +1,5 @@
 # Creato
-Senior design project
+A sideproject intended to try out django/python and design SVG based financial charts.
 
 # WIP
 
@@ -9,7 +9,7 @@ This is a trading platform that allows Youtuber as a tradable digital assets. Us
 
 This project will be a web-app. The frontend will be based on React from the CRA v5 boilerplate. Additional packages such as redux, react-router, styled-components, and more will be used. Also, a charting library based on SVG, D3, will be used for creating graphs.
 
-A websocket will be used to communicate between the client and the trading engine
+A websocket will be used to communicate between the client and the trading engine(WIP)
 
 Rest of the APIs will be throught HTTPS protocol.
 
@@ -100,11 +100,3 @@ The Creato API Server will have the following requirements:
 - Creato users can deposit money into their Creato Account.
 
 - Creato users can withdraw money into their Creato Account.
-
-# Links to documents
-
-[Link to the Creato Presentation](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_Presentation.pdf)
-
-[Link to the Creato SPMP Documents](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_SPMP.pdf)
-
-[Link to the Creato SRS Requirements](https://github.com/Jaypwee/Creato/blob/master/docs/Creato_SRS_Analysis.pdf)
